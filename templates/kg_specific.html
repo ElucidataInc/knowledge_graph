@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Biomedical Knowledge Graph</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    </style>
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <img class="logo" src="../static/elucidata_logo.png" width="500" height="200"/>
+            <br>
+            <br>
+            <div class="box">
+                <h3>Latest Version of Databases</h3>
+                <table>
+                    <tr>
+                      <th>Database</th>
+                      <th>Latest Version (publically available)</th>
+                      <th>Current Version (in local Neo4J)</th>
+                    </tr>
+                    <tr>
+                      <td>GEO - Downregulation</td>
+                      <td>{{ geo_downregulates_relationship_latest }}</td>
+                      <td>{{ geo_downregulates_relationship_current }}</td>
+                    </tr>
+                    <tr>
+                      <td>GEO - Upregulation</td>
+                      <td>{{ geo_upregulates_relationship_latest }}</td>
+                      <td>{{ geo_upregulates_relationship_current }}</td>
+                    </tr>
+                    <tr>
+                      <td>STRING - Relationships</td>
+                      <td>{{ string_interacts_with_relationship_latest }}</td>
+                      <td>{{ string_interacts_with_relationship_current }}</td>
+                    </tr>
+                    <tr>
+                      <td>STRING - Nodes</td>
+                      <td>{{ string_protein_node_latest }}</td>
+                      <td>{{ string_protein_node_current }}</td>
+                    </tr>
+                    <tr>
+                      <td>LINCS - Downregulation</td>
+                      <td>{{ lincs_downregulates_relationship_latest }}</td>
+                      <td>{{ lincs_downregulates_relationship_current }}</td>
+                    </tr>
+                    <tr>
+                      <td>LINCS - Upregulation</td>
+                      <td>{{ lincs_upregulates_relationship_latest }}</td>
+                      <td>{{ lincs_upregulates_relationship_current }}</td>
+                    </tr>
+                    <tr>
+                      <td>DisGeNET - Relationship Association</td>
+                      <td>{{ disgenet_association_relationship_latest }}</td>
+                      <td>{{ disgenet_association_relationship_current }}</td>
+                    </tr>
+                    <tr>
+                      <td>DisGeNET - Disease Node</td>
+                      <td>{{ disgenet_disease_node_latest }}</td>
+                      <td>{{ disgenet_disease_node_current }}</td>
+                    </tr>
+                    <tr>
+                      <td>DisGeNET - Gene Node</td>
+                      <td>{{ disgenet_gene_node_latest }}</td>
+                      <td>{{ disgenet_gene_node_current }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+    <form action="/dvc" align = center>
+        <button class="btn btn-success" method="POST" enctype="multipart/form-data" onclick="loading();">Perform Data Versioning</button>
+    </form>
+    <br>
+    <form action="/kg" align = "center">
+      <button class="btn btn-success" method="POST" enctype="multipart/form-data" onclick="loading();">Generate KG</button>
+    </form>
+    <br>
+    <form action="/kg_gen" align = center>
+        <button class="btn btn-danger" method="POST" enctype="multipart/form-data" onclick="loading();">Generate Knowledge Graph</button>
+    </form>
+    <br>
+    <form action="/table" align = center>
+      <button class="btn btn-default" method="POST" enctype="multipart/form-data" onclick="loading();">View KG versions</button>
+    </form>
+    <br>
+    <br>
+    <br>
+</body>
+</html>

@@ -1,0 +1,4 @@
+outs:
+- md5: e3405761118eb61a8912600f00470b1f
+  size: 25819
+  path: disgenet_association_relationship.tsv

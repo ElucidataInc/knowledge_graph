@@ -1,0 +1,11 @@
+DB File,Base - time,v2 - time (delta),,Previous Edition (Base + Delta)
+LINCS - Down,80.712 s,23.054 s,,120.431 s
+LINCS - Up,50.983 s,30.476 s,,101.642 s
+GEO - Down,0.225 s,0.520 s,,1.210 s
+GEO - Up,0.015 s,0.003 s,,0.016 s
+String - Relationships,166.771 s,141.222 s,,401.991 s
+String - Properties,28.565 s,23.263 s,,63.167 s
+DisGeNET - Relationships,5.395 s,1.128 s,,7.122 s
+DisGeNET - Disease Properties,19.953 s,3.543 s,,27.384 s
+DisGeNET - Gene Properties,19.908 s,5.211 s,,27.114 s
+Heterogeneous Relationships,0.067 s,0.009 s,,0.072 s

@@ -1,0 +1,4 @@
+outs:
+- md5: 43820d101b6228b5cacbef3ea38797d9
+  size: 33623
+  path: disgenet_disease_node.tsv

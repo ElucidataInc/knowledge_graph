@@ -1,0 +1,4 @@
+outs:
+- md5: 91424e426e720cfeb1f9e42330e703cb
+  size: 34876240
+  path: string_interacts-with_relationship.tsv

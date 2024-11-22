@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Version Control for Biomedical Knowledge Graph</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    </style>
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <img class="logo" src="../static/elucidata_logo.png" width="500" height="200"/>
+            <br>
+            <br>
+            <br>
+                <h3>Switch to a specific version</h3>
+                <p>Current Version of KG in the local enviornment is:  {{ current_version }}</p> 
+                <form id="upload-form" action="/switch_kg_version" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="version_ask">Enter the Version No. of KG to switch: </label>
+                        <input type="text" id="version_ask" name="kg_switch_version">
+                        <br>
+                    </div>
+                    <button class="btn btn-success" onclick="loading();">Switch</button>
+                </form>
+            <br>
+            <br>
+                <h3>Switch to the latest version (publically available)</h3>
+                <p>Latest Version of KG is:  {{ latest_version }}</p> 
+                <form id="upload-form" action="/switch_kg_version_to_latest" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <!-- <label for="version_ask">Enter the Version No. of KG to switch: </label> -->
+                        <!-- <input type="text" id="version_ask" name="kg_switch_version"> -->
+                    </div>
+                    <button class="btn btn-success" onclick="loading();">Switch to latest version</button>
+                </form>
+            <br>
+            <br>
+            <div class="box">
+                <h3>Add a new database version</h3>
+                <form id="upload-form" action="/upload1" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <label for="database">Choose a Database</label>
+                            <select name="database" id="database">
+                            <option value="GEO">GEO</option>
+                            <option value="STRING">STRING</option>
+                            <option value="LINCS" selected>LINCS</option>
+                            <option value="DisGeNET">DisGeNET</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pdfFile">Database File</label>
+                            <input type="file" class="form-control" id="pdfFile" name="file"/>
+                        </div>
+                    </div>
+                    <button class="btn btn-success" onclick="loading();">Register</button>
+                </form>
+                
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    <form action="/kg" align = "center">
+        <button class="btn btn-success" method="POST" enctype="multipart/form-data" onclick="loading();">Check Versions & Generate KG</button>
+    </form>
+    <br>
+    <form action="/table" align = center>
+        <button class="btn btn-default" method="POST" enctype="multipart/form-data" onclick="loading();">View KG versions</button>
+      </form>
+    <br>
+</body>
+</html>

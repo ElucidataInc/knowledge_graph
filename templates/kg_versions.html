@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Table </title>   
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"/>           
+    </head>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        </style>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                responsive: true,
+                "pageLength": 10
+            } );
+        } );
+        </script>
+    <body>
+        <br>
+        <br>
+        <div align="center">
+            <img class="logo" src="../static/elucidata_logo.png" width="500" height="200"/>
+            <h3>Version of KG and its corresponding databases</h3>
+        </div>
+        <br>
+        <br>
+        <form action="/dvc" align = center>
+            <button class="btn btn-success" method="POST" enctype="multipart/form-data" onclick="loading();">Perform Data Versioning</button>
+        </form>
+        <br>
+        <form action="/kg" align = "center">
+          <button class="btn btn-success" method="POST" enctype="multipart/form-data" onclick="loading();">Generate KG</button>
+        </form>
+        <br>
+        <div align="center">
+            <table>
+                <h1>
+                <!--Displaying the converted table-->
+                     {% for table in tables %}
+                    <h2>{{titles[loop.index]}}</h2>                            
+                    {{ table|safe }}
+                    {% endfor %}     
+                </h1> 
+            </table>
+        </div>
+        <br>
+    </body>
+</html>

@@ -1,0 +1,4 @@
+outs:
+- md5: 5a107884cc23824971c7002794270d45
+  size: 10606
+  path: disgenet_gene_node.tsv

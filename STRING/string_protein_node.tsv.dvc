@@ -1,0 +1,4 @@
+outs:
+- md5: a782913d8273edb46f0375bde94b1578
+  size: 325060
+  path: string_protein_node.tsv

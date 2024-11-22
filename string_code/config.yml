@@ -1,0 +1,17 @@
+STRING_cutoff: 0.4
+
+STRING_source1 : Ensembl_HGNC
+
+STRING_source2 : Ensembl_gene
+
+STRING_source3 : Ensembl_UniProt_AC
+
+STRING_directory: ./STRING
+
+STRING_mapping_url: https://stringdb-static.org/download/protein.aliases.v11.0/9606.protein.aliases.v11.0.txt.gz
+
+STRING_database_url: 'https://stringdb-static.org/download/protein.links.detailed.v11.0/9606.protein.links.detailed.v11.0.txt.gz'
+
+STRING_name_url: 'https://stringdb-static.org/download/protein.info.v11.0/9606.protein.info.v11.0.txt.gz'
+
+STRING_actions_url : 'https://stringdb-static.org/download/protein.actions.v11.0/9606.protein.actions.v11.0.txt.gz'

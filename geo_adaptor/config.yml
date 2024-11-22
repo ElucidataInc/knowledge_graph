@@ -1,0 +1,8 @@
+db:
+ disease : Non-Small Cell Lung Carcinoma 
+ csvdir : /home/elucidata/Downloads/geo_de/csvs
+ pvaluethr : 0.05
+ log2fcthr : 1.5
+ dir : ./GEO
+ upregulatedfile : geo_upregulates_relationship.tsv
+ downregulatedfile : geo_downregulates_relationship.tsv

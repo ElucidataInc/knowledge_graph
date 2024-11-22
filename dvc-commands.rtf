@@ -1,0 +1,269 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fswiss\fcharset0 Helvetica-Oblique;
+}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww35340\viewh20480\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 ## Set Amazon S3 as a remote storage (Make sure that Git and DVC is initiated first)\
+git init\
+dvc init\
+dvc remote add -d storage 
+\f1\b s3://kg-dvc-trial/GEO 
+\f0\b0 \
+dvc remote modify storage access_key_id 
+\f1\b <key>
+\f0\b0 \
+dvc remote modify storage secret_access_key 
+\f1\b <key>
+\f0\b0 \
+dvc remote modify storage session_token 
+\f1\b <token>
+\f0\b0 \
+\
+\
+## Steps for DVC - Perform Data Versioning:\
+1. Initiate Git and DVC\
+
+\f1\b git init\
+dvc init
+\f0\b0 \
+\
+2. Download the specific database file using the adaptor code into a folder corresponding to the database\
+
+\f1\b mkdir GEO\
+
+\f2\i\b0 <Download the db file now, for e.g. = geo_downregulates_relationship.tsv>
+\f0\i0 \
+
+\f1\b ls -lh GEO\
+\
+
+\f0\b0 3. Register the downloaded db file with DVC
+\f1\b \
+dvc add GEO/geo_downregulates_relationship.tsv\
+\
+
+\f0\b0 4. Track the changes to that db file with git (Changes = Data versioning), here \'93.dvc\'94 is created\
+
+\f1\b git add GEO/.gitignore GEO/geo_downregulates_relationship.tsv.dvc
+\f0\b0 \
+\
+5. Write a commit message which is reflected in the Bitbucket repository\
+
+\f1\b git commit -m "Added version 1 of GEO downregulated data"\
+\
+
+\f0\b0 6. Push the .dvc file to Git\
+
+\f1\b dvc push\
+\
+
+\f0\b0 7. Transfer the file to S3\
+
+\f1\b git push -u origin dvc\
+\
+
+\f2\i\b0 Repeat steps 2 to 7 for versioning of the next update of geo_downregulates_relationship.tsv
+\f0\i0 \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+Last login: Fri Mar  4 13:26:59 on ttys001\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % dvc init
+\f0\b0 \
+Initialized DVC repository.\
+\
+You can now commit the changes to git.\
+\
++---------------------------------------------------------------------+\
+|                                                                     |\
+|        DVC has enabled anonymous aggregate usage analytics.         |\
+|     Read the analytics documentation (and how to opt-out) here:     |\
+|             <https://dvc.org/doc/user-guide/analytics>              |\
+|                                                                     |\
++---------------------------------------------------------------------+\
+\
+What's next?\
+------------\
+- Check out the documentation: <https://dvc.org/doc>\
+- Get help and share ideas: <https://dvc.org/chat>\
+- Star us on GitHub: <https://github.com/iterative/dvc>\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % mkdir GEO\
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % ls -lh GEO\
+
+\f0\b0 total 216\
+-rw-r--r--@ 1 iambankaratharva  staff   105K Mar  4 13:27 geo_downregulates_relationship.tsv\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % dvc add GEO/geo_downregulates_relationship.tsv
+\f0\b0 \
+100% Adding...|\uc0\u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 |1/1 [00:00, 33.41file/s]\
+                                                                                                                                                                        \
+To track the changes with git, run:\
+\
+    git add GEO/.gitignore GEO/geo_downregulates_relationship.tsv.dvc\
+\
+To enable auto staging, run:\
+\
+	dvc config core.autostage true\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % git add GEO/.gitignore GEO/geo_downregulates_relationship.tsv.dvc\
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % git commit -m "Added version 1 of GEO downregulated data"\
+
+\f0\b0 [dvc 5f9f74e] Added version 1 of GEO downregulated data\
+ 11 files changed, 520 insertions(+)\
+ create mode 100644 .dvc/.gitignore\
+ create mode 100644 .dvc/config\
+ create mode 100644 .dvc/plots/confusion.json\
+ create mode 100644 .dvc/plots/confusion_normalized.json\
+ create mode 100644 .dvc/plots/linear.json\
+ create mode 100644 .dvc/plots/scatter.json\
+ create mode 100644 .dvc/plots/simple.json\
+ create mode 100644 .dvc/plots/smooth.json\
+ create mode 100644 .dvcignore\
+ create mode 100644 GEO/.gitignore\
+ create mode 100644 GEO/geo_downregulates_relationship.tsv.dvc\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % cd GEO\
+(base) iambankaratharva@Atharvas-MacBook-Pro GEO % cat geo_downregulates_relationship.tsv.dvc  \
+
+\f0\b0 outs:\
+- md5: 0c91da4a6b643eba541fb097a0762fcb\
+  size: 107144\
+  path: geo_downregulates_relationship.tsv\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro GEO % cd ..\
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % dvc remote add -d storage s3://kg-dvc-trial/GEO \
+
+\f0\b0 Setting 'storage' as a default remote.\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % dvc remote modify storage access_key_id ASIAXRH5YCHGRWXVIQX4                        \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % dvc remote modify storage secret_access_key IZkQGU6wmmY9/t9R3UQwzv92T55dMLykc1HDdeTb\
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % dvc remote modify storage session_token IQoJb3JpZ2luX2VjEPH//////////wEaDmFwLXNvdXRoZWFzdC0xIkcwRQIgB9RFlr02MRmgwQR4PiukcOkl5D+Ix8afgssmsz46B48CIQDHsQAZBQiq2XkTK9z2+rcCOwgp6QMezkeAUKCVl2npbyqgAwhaEAEaDDUxODA3NTcxNjA0NSIMHLDYmeQXmmbnSBUOKv0CKh2Eo0ZdIaSySlmSNQvSbjHoXRv5tUP0ciAGXGSB4PSppWH5KvprUoGkfrUsDZefkzC8ne91BbflPtQAJWkOPN70+QLTER8pgfA8vzWMKvivmwp8IBywFHAJKzgiaVRcH3IyoRb9UgEXkLwi3nVyUafRiL+kEZIAhdQmqjrkXtKOxvRYDXl1E16tnY7Rshr68N6GptBSmXKWjwW3d3pdvD5kW0Fll7enCtozs/mfRtrNSL+AyslMfbGIUDk+afXz421TWZiuGgYnsG8+Fe0/oflbK9axrkkfleBbLHUa3UDmL600L+gC6xb/eXSJmXo84+0ZPCmp5LyMO9TlESL/wRbPbIbcEl1ePgcTYFkWX/6Zvvsr4HPVg+Be31695VF5qGNotnFmG2R0jHDNqj/5YbzDAP0hIXBeeBlpBcmc6Xf7m8xq/kfgF3q8E1sN50aKKiqjo14LGc2HSB4Rp1OkMaLLSUTe8lVyRlOg9AEftYAdtnN44rb5P4NI/sEfMMSZh5EGOqYB9NeS83eLQrP0SfGF+0V2M+RlJTfuC9jrLlsQTDPAp+/sGPfI7gpGvktQ7lxpAKwLZh6Ujz1mfi56mi/csixD/QQ0Ru9T4e1+DdqPswvBS39aBe7MrHOlgBmbV3oADW/Wp7t3q3I337xpITyzzXIzrpPqhv9hZuiMOKTmPKVWi8V9RqwjHmD8S4mNUZxkcEkLQPr2v8xC34S736jrvzKityKohUmtwg==\
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % dvc push
+\f0\b0 \
+1 file pushed                                                                                                                                                           \
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % ls GEO
+\f0\b0 \
+geo_downregulates_relationship.tsv	geo_downregulates_relationship.tsv.dvc\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % cd GEO\
+(base) iambankaratharva@Atharvas-MacBook-Pro GEO % cat .gitignore \
+
+\f0\b0 /geo_downregulates_relationship.tsv\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro GEO % cd ..\
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % rm -f GEO/geo_downregulates_relationship.tsv\
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % rm -rf .dvc/cache\
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % ls GEO\
+
+\f0\b0 geo_downregulates_relationship.tsv.dvc\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % dvc pull
+\f0\b0 \
+A       GEO/geo_downregulates_relationship.tsv                                                                                                                                                                                                            \
+1 file added and 1 file fetched                                                                                                                                                                                                                           \
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % ls
+\f0\b0 \
+GEO\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % cp GEO/geo_downregulates_relationship.tsv /tmp/geo_downregulates_relationship.tsv \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % cat /tmp/geo_downregulates_relationship.tsv >> GEO/geo_downregulates_relationship.tsv\
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % ls -lh GEO\
+
+\f0\b0 total 432\
+-rw-r--r--  1 iambankaratharva  staff   209K Mar  4 14:22 geo_downregulates_relationship.tsv\
+-rw-r--r--  1 iambankaratharva  staff   104B Mar  4 13:39 geo_downregulates_relationship.tsv.dvc\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % dvc add GEO/geo_downregulates_relationship.tsv
+\f0\b0 \
+100% Adding...|\uc0\u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 |1/1 [00:00, 23.68file/s]\
+                                                                                                                                                                                                                                                          \
+To track the changes with git, run:\
+\
+    git add GEO/geo_downregulates_relationship.tsv.dvc\
+\
+To enable auto staging, run:\
+\
+	dvc config core.autostage true\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % git add GEO/geo_downregulates_relationship.tsv.dvc\
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % git commit -m "Version 2 of data (here, doubled the data)"        \
+
+\f0\b0 [dvc 77b0a9c] Version 2 of data (here, doubled the data)\
+ 1 file changed, 2 insertions(+), 2 deletions(-)\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % dvc push\
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % git log --oneline\
+
+\f0\b0 77b0a9c (HEAD -> dvc) Version 2 of data (here, doubled the data)\
+d195b91 (origin/dvc) done\
+8e75131 Configure remote storage\
+5f9f74e Added version 1 of GEO downregulated data\
+d769141 Delete all the stuff\
+f4307d7 restart\
+0baa24e config added\
+718b701 add STRING_try\
+2314429 add GEO\
+6bf6ee6 Initialize DVC\
+86e2d56 .DS_Store edited online with Bitbucket\
+9d40534 restart\
+aa825a1 restart\
+163ee55 add STRING_try\
+a72c2ea add GEO\
+1440bb1 Initialize DVC\
+da045d2 (origin/master, origin/HEAD, origin/GEO, master) Initial commit\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % git checkout HEAD^1 GEO/geo_downregulates_relationship.tsv.dvc
+\f0\b0 \
+Updated 1 path from 2cb0724\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % dvc checkout
+\f0\b0 \
+M       GEO/geo_downregulates_relationship.tsv                                                                                                                                                                                                            \
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % ls -lh GEO
+\f0\b0 \
+total 224\
+-rw-r--r--  1 iambankaratharva  staff   105K Mar  4 14:21 geo_downregulates_relationship.tsv\
+-rw-r--r--  1 iambankaratharva  staff   104B Mar  4 14:28 geo_downregulates_relationship.tsv.dvc\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % git commit GEO/geo_downregulates_relationship.tsv.dvc -m "Revert dataset updates back to Version 1"
+\f0\b0 \
+[dvc eb84682] Revert dataset updates back to Version 1\
+ 1 file changed, 2 insertions(+), 2 deletions(-)\
+
+\f1\b \
+(base) iambankaratharva@Atharvas-MacBook-Pro knowledge_graph % }
